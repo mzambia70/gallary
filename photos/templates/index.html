@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container">
+
+    <div class="imtitle" style="display: flex; text-align: center; margin: 5%;">
+        <img src="http://www.pngmart.com/files/7/Gallery-PNG-Pic.png" style="width: 12%; border: none" ;
+            height="12%; margin-right: 2%">
+        <h1>WELCOME TO MY GALLERY</h1>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        {% if images %}
+        {% for image in images %}
+        <div class="col-xs-12 col-sm-6 col-md-4 column">
+            <h3>{{image.name}}</h3>
+            <img src="{{image.image_path.url}}" class=" selectedImage imag">
+            <a href="{% url 'single_image' image.id %}" id='copy'> <button type="button" class="btn btn-success"> click for more details </button> </a>
+        </div>
+
+        <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+
+            <!-- Modal Content (The Image) -->
+            <img src='' class="modal-content" id="modal-con">
+
+            <div class="modal-content text-center">
+                <h4> <strong>Description:</strong> {{image.description}}</h4>
+                <h6> <strong>Location:</strong> {{image.location}}</h6>
+                <h6> <strong>Category:</strong> {{image.category}}</h6>
+                <h5> <strong>Photographer:</strong> {{image.photographer}}</h5>
+                <input type="text" value="https://fuaadgallery.herokuapp.com{{image.image_path.url}}" id="myInput">
+                <button onclick="myFunction()">Copy Url</button>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
