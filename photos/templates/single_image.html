@@ -3,6 +3,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=0.1">
     <title>{{image.name}}</title>
@@ -29,7 +36,7 @@
                         <h6> <strong>Location:</strong> {{image.location}}</h6>
                         <h6> <strong>Category:</strong> {{image.category}}</h6>
                         <h5> <strong>Photographer:</strong> {{image.photographer}}</h5>
-                        <input type="text" value="https://fuaadgallery.herokuapp.com{{image.image_path.url}}"
+                        <input type="text" value=""
                             id="myInput">
                         <button onclick="myFunction()">Copy Url</button>
                     </div>
